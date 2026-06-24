@@ -1,45 +1,65 @@
 <header class="header">
-  <nav class="navbar">
+  <nav class="navbar {{~#if site.keys.nonProduction}} navbar-nonProduction {{/if~}} ">
     <div class="navbar-brand">
-      <a class="navbar-item" href="{{{or site.url siteRootPath}}}">{{site.title}}</a>
-      {{#if env.SITE_SEARCH_PROVIDER}}
-      <div class="navbar-item search hide-for-print">
-        <div id="search-field" class="field">
-          <input id="search-input" type="text" placeholder="Search the docs"{{#if page.home}} autofocus{{/if}}>
-        </div>
+      <div class="navbar-item">
+        <a class="bonita-logo" href="{{{or site.url (or siteRootUrl siteRootPath)}}}"></a>
+      </div>
+
+      {{#if site.keys.nonProduction}}
+      <div class="navbar-item-nonProduction">
+        <p>
+          {{#if site.keys.prLink}}
+            <a href="{{{site.keys.prLink}}}" target="_blank" rel="noopener noreferrer" class="pr-link" title="View pull request">
+              {{site.title}}
+              </a>
+          {{else}}
+            {{site.title}}
+          {{/if}}
+        </p>
       </div>
       {{/if}}
-      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+    </div>
+
+    <div id="topbar-nav" class="navbar-menu">
+      {{#unless site.keys.hideNavbarComponentsList}}
+      {{#each (isComponentToHide site.components page) }}
+      <div class="navbar-item is-hoverable">
+        <a class="navbar-link" href="{{{./latest.url}}}">{{{./title}}}</a>
+      </div>
+      {{/each}}
+      {{/unless}}
+    </div>
+
+    <div class="navbar-end" id="search-container">
+      {{#if (isSearchBarDisplayed site page)}}
+      <div class="navbar-item search-item hide-for-print">
+        <div id="docsearch"></div>
+      </div>
+      {{/if}}
+
+      <div class="theme-switch-wrapper">
+        <button class="theme-switch-container" id="theme-switcher" aria-label="Theme switcher" aria-pressed="false" role="switch">
+          <span class="theme-selector theme-selector-system" title="System mode"></span>
+          <span class="theme-selector theme-selector-dark" title="Dark mode"></span>
+          <span class="theme-selector theme-selector-light" title="Light mode"></span>
+        </button>
+      </div>
+
+      <button class="navbar-burger" data-target="topbar-nav-mobile">
         <span></span>
         <span></span>
         <span></span>
       </button>
     </div>
-    <div id="topbar-nav" class="navbar-menu">
-      <div class="navbar-end">
-        <a class="navbar-item" href="#">Home</a>
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link" href="#">Products</a>
-          <div class="navbar-dropdown">
-            <a class="navbar-item" href="#">Product A</a>
-            <a class="navbar-item" href="#">Product B</a>
-            <a class="navbar-item" href="#">Product C</a>
-          </div>
-        </div>
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link" href="#">Services</a>
-          <div class="navbar-dropdown">
-            <a class="navbar-item" href="#">Service A</a>
-            <a class="navbar-item" href="#">Service B</a>
-            <a class="navbar-item" href="#">Service C</a>
-          </div>
-        </div>
-        <div class="navbar-item">
-          <span class="control">
-            <a class="button is-primary" href="#">Download</a>
-          </span>
-        </div>
-      </div>
+  </nav>
+
+  <nav id="topbar-nav-mobile" class="navbar-menu-mobile">
+    {{#unless site.keys.hideNavbarComponentsList}}
+    {{#each (isComponentToHide site.components page) }}
+    <div class="navbar-item is-hoverable">
+      <a class="navbar-link" href="{{{./latest.url}}}">{{{./title}}}</a>
     </div>
+    {{/each}}
+    {{/unless}}
   </nav>
 </header>

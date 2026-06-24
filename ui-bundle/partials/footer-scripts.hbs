@@ -1,5 +1,37 @@
-<script id="site-script" src="{{{uiRootPath}}}/js/site.js" data-ui-root-path="{{{uiRootPath}}}"></script>
-<script async src="{{{uiRootPath}}}/js/vendor/highlight.js"></script>
-{{#if env.SITE_SEARCH_PROVIDER}}
-{{> search-scripts}}
+<script>window.uiRootPath = '{{{uiRootPath}}}'</script>
+<script src="{{{uiRootPath}}}/js/vendor/highlight.min.js"></script>
+<script src="{{{uiRootPath}}}/js/vendor/libs.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script src="{{{uiRootPath}}}/js/site.js"></script>
+<script async src="{{{uiRootPath}}}/js/vendor/tabs.js" data-sync-storage-key="preferred-tab"></script>
+
+{{!-- DocSearch only available if the search bar is displayed --}}
+{{#if (isSearchBarDisplayed site page)}}
+<script type="text/javascript">
+  docsearch({
+    container: '#docsearch',
+    appId: 'LWD25NX3CD',
+    apiKey: '6408f799f329e3a010e6a5ac397210d8',
+    indexName: 'bonitasoft',
+    hitsPerPage: 20,
+    searchParameters: {
+    {{#if page.attributes.version-alias}}
+      facetFilters: [["version:{{page.version}}", "version:{{page.attributes.version-alias}}"], "tags:{{page.component.name}}"],
+    {{else}}
+      facetFilters: [["version:{{page.version}}"], "tags:{{page.component.name}}"],
+    {{/if}}
+    }
+  });
+</script>
 {{/if}}
+
+
+<script>
+  let asciinemaPlayers = document.querySelectorAll('asciinema-player');
+  asciinemaPlayers.forEach(htmlPlayer => {
+  let options = {fit: false};
+  htmlPlayer.getAttributeNames().forEach(key => options[key] = htmlPlayer.getAttribute(key));
+  AsciinemaPlayer.create(htmlPlayer.getAttribute('src'), htmlPlayer, options);
+});
+
+</script>

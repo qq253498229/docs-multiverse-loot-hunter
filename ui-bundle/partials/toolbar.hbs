@@ -1,9 +1,52 @@
-<div class="toolbar" role="navigation">
-{{> nav-toggle}}
+<div class="toolbar toolbar-wrap">
+  <div class="toolbar" role="navigation">
+  {{> nav-toggle}}
   {{#with site.homeUrl}}
   <a href="{{{relativize this}}}" class="home-link{{#if @root.page.home}} is-current{{/if}}"></a>
   {{/with}}
-{{> breadcrumbs}}
-{{> page-versions}}
-{{> edit-this-page}}
+  {{> breadcrumbs}}
+  {{> page-versions}}
+  {{#unless site.keys.hideEditPageLinks}}
+  {{#if page.attributes.editable}}
+  {{#if (and page.fileUri (not env.CI))}}
+    <div class="page-icons">
+      <a href="{{page.fileUri}}"><img src="{{{uiRootPath}}}/img/edit.svg" title="Edit this page" alt="Edit" height="17"></a>
+      {{> page-additional-icons}}
+    </div>
+  {{else if (and page.editUrl (or env.FORCE_SHOW_EDIT_PAGE_LINK (not page.origin.private)))}}
+    <div class="page-icons">
+      <a href="{{page.editUrl}}"><img src="{{{uiRootPath}}}/img/edit.svg" title="Edit this page" alt="Edit" height="17"></a>
+      {{> page-additional-icons}}
+    </div>
+  {{/if}}
+  {{/if}}
+  </div>
+
+  {{!-- START support for message blocks - to keep in sync with the 'isMessageBlockDisplayed' helper --}}
+  {{#if page.attributes.next-release}}
+    <div class="paragraph message-block next-release-block">
+      <p>This content is dedicated to our next version.
+        It is work in progress: its content will evolve until the new version is released.
+      </p>
+      <p>
+        Before that time, it <b>cannot be considered as official</b>.
+      </p>
+    </div>
+  {{/if}}
+
+  {{#if page.attributes.custom-message}}
+    <div class="paragraph message-block custom-message-block">
+      <p>{{page.attributes.custom-message}}</p>
+    </div>
+  {{/if}}
+
+  {{#if page.attributes.out-of-support}}
+    <div class="paragraph message-block out-of-support-block">
+      <p>This documentation is for a version that is <b>out of support</b>.</p>
+      <p>You may want to view the same page for the <a href="{{{relativize page.latest.url}}}">latest version</a>, or for any of the versions available in the drop-down menu in the top-right corner.</p>
+    </div>
+  {{/if}}
+  {{!-- END support for message blocks --}}
+
+  {{/unless}}
 </div>
