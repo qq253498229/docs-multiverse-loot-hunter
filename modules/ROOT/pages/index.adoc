@@ -1,3 +1,3 @@
 = 主页
 
-这里是主页
+* xref:my-guide/index.adoc[]

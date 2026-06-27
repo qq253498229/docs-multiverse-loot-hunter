@@ -1,0 +1,12 @@
+= 个人游玩心得
+
+== 主位面
+
+include::work.adoc[leveloffset=+2]
+
+include::a0.adoc[leveloffset=+1]
+
+== 穿越位面
+
+include::a1.adoc[leveloffset=+2]
+include::a2.adoc[leveloffset=+2]
