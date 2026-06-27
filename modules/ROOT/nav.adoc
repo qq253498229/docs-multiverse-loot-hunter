@@ -2,8 +2,10 @@
 * xref:my-guide/a0.adoc[]
 * xref:my-guide/a1.adoc[]
 ** xref:my-guide/zhenxing.adoc[]
-** xref:my-guide/why-zhaoyun.adoc[]
 ** xref:my-guide/zhiye-jineng.adoc[]
 * xref:my-guide/a2.adoc[]
+** xref:my-guide/xinghun-duihuan.adoc[]
+** xref:my-guide/why-zhaoyun.adoc[]
+* xref:my-guide/a3.adoc[]
 
 * link:https://store.steampowered.com/app/2776450/_/[Steam商店链接,window=_blank]
