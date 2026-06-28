@@ -11,5 +11,7 @@
 * xref:my-guide/a5.adoc[]
 * xref:my-guide/a1-dungeon.adoc[]
 * xref:my-guide/a6.adoc[]
+* xref:my-guide/a7.adoc[]
+** xref:my-guide/cdr95.adoc[]
 
 * link:https://store.steampowered.com/app/2776450/_/[Steam商店链接,window=_blank]

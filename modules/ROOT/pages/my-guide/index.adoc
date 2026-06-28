@@ -1,17 +1,20 @@
 = 个人游玩心得
 
-== 主位面
-
-include::work.adoc[leveloffset=+2]
-
-include::a0.adoc[leveloffset=+1]
+* xref:my-guide/work.adoc[]
+* xref:my-guide/a0.adoc[]
 
 == 穿越位面
 
-include::a1.adoc[leveloffset=+2]
-include::a2.adoc[leveloffset=+2]
-include::a3.adoc[leveloffset=+2]
-include::a4.adoc[leveloffset=+2]
-include::a5.adoc[leveloffset=+2]
-include::a1-dungeon.adoc[leveloffset=+2]
-include::a6.adoc[leveloffset=+2]
+* xref:my-guide/a1.adoc[]
+** xref:my-guide/zhenxing.adoc[]
+** xref:my-guide/zhiye-jineng.adoc[]
+* xref:my-guide/a2.adoc[]
+** xref:my-guide/xinghun-duihuan.adoc[]
+** xref:my-guide/why-zhaoyun.adoc[]
+* xref:my-guide/a3.adoc[]
+* xref:my-guide/a4.adoc[]
+* xref:my-guide/a5.adoc[]
+* xref:my-guide/a1-dungeon.adoc[]
+* xref:my-guide/a6.adoc[]
+* xref:my-guide/a7.adoc[]
+** xref:my-guide/cdr95.adoc[]
