@@ -7,5 +7,6 @@
 ** xref:my-guide/xinghun-duihuan.adoc[]
 ** xref:my-guide/why-zhaoyun.adoc[]
 * xref:my-guide/a3.adoc[]
+* xref:my-guide/a4.adoc[]
 
 * link:https://store.steampowered.com/app/2776450/_/[Steam商店链接,window=_blank]
